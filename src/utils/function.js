@@ -5,11 +5,12 @@ const videoLoader = async ({ request }) => {
 
   const url = new URL(request.url)
   const grade = url.searchParams.get("grade")
+  const school = url.searchParams.get("school")
 
 
  
   if (grade) {
-    const video = await getVideo(grade)
+    const video = await getVideo(grade,school)
   
     
     if (video) {

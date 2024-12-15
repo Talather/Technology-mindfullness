@@ -165,8 +165,9 @@ async function createUser(userCreate) {
   }
 }
 
-async function getVideo(grade) {
+async function getVideo(grade,school) {
   try {
+    console.log("getvideo hit")
     const firebaseConfig = {
       apiKey: apiKey,
       authDomain: authDomain,
@@ -183,12 +184,17 @@ async function getVideo(grade) {
     const videoCollectionRef = collection(db, "videos")
 
     grade = doc(db, "grades", grade)
+    school = doc(db, "schools", school)
+    console.log("before grade query hit")
+   
     const querySnapshot = await query(
       videoCollectionRef,
-      where("grade", "==", grade)
+      where("grade", "==", grade),
+      where("school", "==", school)
     )
+    console.log("after grade query hit")
 
-    console.log("grade",querySnapshot)
+    console.log("ghikr", querySnapshot)
 
     if (querySnapshot) {
       const v = await getDocs(querySnapshot)

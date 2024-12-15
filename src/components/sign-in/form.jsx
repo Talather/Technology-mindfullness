@@ -5,6 +5,7 @@ import styles from "./form.module.css"
 import { useNavigate } from "react-router-dom"
 import { createUser } from "../../firebase"
 import SchoolAutoComplete from "../../components/school/autocomplete"
+// import { usePathname, useRouter, useSearchParams } from "next/navigation"
 export default function SignInFormComponent() {
   const {
     formState: { errors, isSubmitting },
@@ -12,9 +13,12 @@ export default function SignInFormComponent() {
     register,
     control
   } = useForm()
+  //  const searchParams = useSearchParams()
+  //  const pathName = usePathname()
+  //  const router = useRouter()
   const [state, setState] = useState({})
   const navigate = useNavigate()
-
+  
   const onSubmit = async (formData) => {
     setState({})
 
@@ -25,14 +29,16 @@ export default function SignInFormComponent() {
       school: formData.school,
       role: "student",
     }
+    // const params = new URLSearchParams(searchParams)
+    
     const user = await createUser({ userCreate })
-
+    console.log("mika singh",user)
     if (!user) {
       setState({ success: true })
     } else {
       setState(user)
     }
-    navigate(`/video?grade=${user.grade}&user=${user.id}`)
+    navigate(`/video?grade=${user.grade}&user=${user.id}&school=${formData.school}`)
   }
 
   return (
