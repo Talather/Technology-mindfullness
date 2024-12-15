@@ -207,7 +207,7 @@ export default function QuizComponent() {
                       classNames="slide-next"
                     >
                       <div
-                        className={`${styles.question} border border-black p-4`}
+                        className={`${styles.question} border border-black p-8 m-4`}
                         key={questions[currentIndex].id}
                       >
                         <Controller
