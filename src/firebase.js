@@ -82,16 +82,57 @@ async function createUser(userCreate) {
 
     const gradeCollectionRef = collection(db, "grades")
 
-    const gradeSnapshot = await getDocs(collection(db, "grades"))
-    const gradeDocsData = gradeSnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }))
 
-    const grades = gradeDocsData.filter(
-      (item) => item.level === parseInt(userCreate.grade, 10)
+
+
+
+
+
+    // const gradeSnapshot = await getDocs(collection(db, "grades"))
+    // const gradeDocsData = gradeSnapshot.docs.map((doc) => ({
+    //   id: doc.id,
+    //   ...doc.data(),
+    // }))
+    // console.log("usergrades", gradeDocsData)
+    // const grades = gradeDocsData.filter(
+    //   (item) => item.level === parseInt(userCreate.grade, 10)
+    // )
+    //  console.log("mmusergrades",  grades)
+
+    
+    
+    
+
+    const q = query(
+      gradeCollectionRef,
+      where("level", "==",
+        // parseInt(
+          userCreate.grade
+        // )
+      )
     )
 
+    // Execute the query
+    const querySnapshot = await getDocs(q)
+    let grades=[]
+    // Process and return the results
+    if (!querySnapshot.empty) {
+      querySnapshot.forEach((doc) => {
+        // console.log("Found grade:", doc.id, "=>", doc.data())
+        grades.push({id:doc.id,...doc.data()})
+      })
+    } 
+    console.log("zikka",grades)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     const gradeRef = await doc(db, "grades", grades[0]?.id)
 
     const schoolDocRef = await doc(db, "schools", userCreate.school)
@@ -146,6 +187,8 @@ async function getVideo(grade) {
       videoCollectionRef,
       where("grade", "==", grade)
     )
+
+    console.log("grade",querySnapshot)
 
     if (querySnapshot) {
       const v = await getDocs(querySnapshot)

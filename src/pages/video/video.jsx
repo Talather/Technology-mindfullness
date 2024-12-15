@@ -192,20 +192,16 @@ export default function Video() {
       className={styles.videoContainer}
     >
       <div className={styles.signIn}>
-        {videoData?.url ? (
+        {videoData?.url || videoData?.fUrl ? (
           <>
             <ReactPlayer
               ref={playerRef}
-              url={videoData.url}
+              url={videoData?.url || videoData?.fUrl}
               playing={true}
               height="85vh"
               width="100%"
-              onProgress={handleProgress}
-              onSeek={(seek) => {
-                if (seek > playedSeconds && playerRef.current) {
-                  playerRef.current.seekTo(playedSeconds)
-                }
-              }}
+              controls={true}
+             
             />
 
             <div className={styles.quizNavigation}>
