@@ -1,0 +1,193 @@
+.audit {
+  display: flex;
+  flex-direction: column;
+  /* background-color: brown; */
+  height: 85vh;
+  /* border-radius: 20px; */
+ box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+
+  
+
+
+  
+}
+
+.topBar {
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  display: flex;
+  /* gap: 20px; */
+  height: 90px;
+  width: auto;
+  padding: 10px;
+}
+
+.title {
+  color: var(--primary-foreground);
+  font-size: 30px;
+  margin-top: 12px;
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;*/
+  /* width: 30vw;  */
+}
+
+.content {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  overflow: auto;
+}
+
+.contentInner {
+  /* border: 2px solid red; */
+  margin: auto 0;
+  max-width: 800px;
+  min-width: 50%;
+}
+
+.topic {
+  margin: 10px 0;
+}
+
+.topicName {
+  background-color: var(--primary-color);
+  color: var(--primary-foreground);
+  padding: 5px;
+}
+
+.category {
+  margin: 5px 0;
+}
+
+.categoryName {
+  background-color: var(--default-color);
+  ;
+  color: var(--default-foreground);
+  padding: 5px 25px 5px;
+}
+
+.subcategory {
+  margin: 5px 0;
+}
+
+.subcategoryName {
+  background-color: var(--default-color);
+  ;
+  color: var(--default-foreground);
+  padding: 5px 45px 5px;
+}
+
+.question {
+  margin: 5px 45px 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.footer {
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.footerInner {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  max-width: 800px;
+  width: 100%;
+
+}
+
+.progress {
+  width: 500px;
+}
+
+.completed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  /* background-color: brown; */
+  height:85vh ;
+  /* width:25vw; */
+  border:30px solid white;
+  /* margin-top: 20px; */
+  font-size: 40px;
+  font-style: bold;
+  color: #97c5bf;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+
+
+}
+
+.completedText {
+  text-align: center;
+}
+
+.completedFooter {
+  font-size: 16px !important;
+  text-align: start;
+  font-weight: 600
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.slide-next-enter {
+  transform: translateX(100%); /* Start from the right */
+  opacity: 0;
+}
+
+.slide-next-enter-active {
+  transform: translateX(0); /* Slide into view */
+  opacity: 1;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+
+/* Slide Out Next - for the exiting element */
+.slide-next-exit {
+  transform: translateX(0); /* Start in place */
+  opacity: 1;
+}
+
+.slide-next-exit-active {
+  transform: translateX(-100%); /* Slide out to the left */
+  opacity: 0;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+
+/* Other styles */

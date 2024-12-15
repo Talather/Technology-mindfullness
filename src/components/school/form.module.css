@@ -1,0 +1,23 @@
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.formElementsWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.formInput {
+  max-width: calc(50% - 10px);
+}
+
+.footer {
+  display: flex;
+}
+
+.footerButton {
+  width: 100%;
+}

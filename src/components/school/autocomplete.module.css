@@ -1,0 +1,36 @@
+.formInput {
+  max-width: calc(50% - 10px);
+}
+.base {
+  background-color: var(--primary-color);
+  color: var(--primary-foreground);
+}
+
+.base [data-slot="input-wrapper"] {
+  border: none;
+}
+
+.base [data-slot="input"]::placeholder {
+  color: var(--primary-foreground);
+}
+
+.clearButton {
+  color: var(--primary-foreground);
+}
+
+.endContentWrapper {
+}
+
+.listbox {
+}
+
+.listboxWrapper {
+}
+
+.popoverContent {
+}
+
+.selectorButton {
+  color: var(--primary-foreground);
+}
+
