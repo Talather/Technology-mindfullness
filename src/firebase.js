@@ -301,7 +301,7 @@ async function createSubmittedQuiz(submittedQuizCreate) {
     const db = getFirestore()
 
     const submittedQuizCollectionRef = collection(db, "submittedQuiz")
-    const quizCollectionRef = collection(db, "quiz")
+    const quizCollectionRef = collection(db, "quizzes")
     const usersCollectionRef = collection(db, "users")
     submittedQuizCreate.quiz = doc(quizCollectionRef, quiz)
     submittedQuizCreate.user = doc(usersCollectionRef, user)
@@ -335,7 +335,7 @@ async function createResponses(responseCreates) {
     const batch = writeBatch(db)
 
     const answerCollectionRef = collection(db, "answer")
-    const quizCollectionRef = collection(db, "quiz")
+    const quizCollectionRef = collection(db, "quizzes")
     const usersCollectionRef = collection(db, "users")
 
     responseCreates.forEach((item) => {

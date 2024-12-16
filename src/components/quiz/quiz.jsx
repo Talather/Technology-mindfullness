@@ -30,6 +30,7 @@ export default function QuizComponent() {
   const video = searchParams.get("video")
   const user = searchParams.get("user")
 
+  
 
   useEffect(() => {
     const fetchData = async () => {
