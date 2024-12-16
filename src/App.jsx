@@ -13,7 +13,7 @@ import {
 
 } from "react-router-dom"
 import Quiz from "./pages/quiz/quiz"
-
+import ErrorPage from "./pages/video/error"
 
 const App = () => {
 
@@ -23,6 +23,7 @@ const App = () => {
       path: "/video",
       element: <Video />,
       loader: videoLoader,
+      errorElement: <ErrorPage />,
     },
     {
       path: "/quiz",
