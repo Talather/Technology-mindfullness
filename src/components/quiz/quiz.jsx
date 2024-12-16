@@ -224,12 +224,8 @@ export default function QuizComponent() {
                                   {questions[currentIndex].text}
                                 </p>
                               }
-
                               onChange={(val) => {
                                 onChange(val)
-
-
-
 
                                 updateProgress()
                                 removeFocus()
@@ -262,8 +258,6 @@ export default function QuizComponent() {
                   <Button
                     color="primary"
                     className="w-full"
-
-
                     onClick={() => {
                       handlePrevious()
                     }}
@@ -276,11 +270,7 @@ export default function QuizComponent() {
                       color="primary"
                       className="w-full"
                       isLoading={isSubmitting}
-
                       type={"Submit"}
-
-
-
                     >
                       Submit
                     </Button>
@@ -288,9 +278,6 @@ export default function QuizComponent() {
                     <Button
                       color="primary"
                       className="w-full"
-
-
-
                       onClick={() => {
                         handleNext()
                       }}
@@ -341,6 +328,19 @@ export default function QuizComponent() {
           <p>
             Your quiz score is around {correctAnswerScore}/{questions.length}
           </p>
+          {/* <div style={{height:"100px",width:"100px", backgroundColor:"red"}}> */}
+            <a
+              href="/"
+            style={{
+              backgroundColor: "#97c5bf", color: "white",
+                padding:"10px",marginTop:"30px",borderRadius:"10px",
+               }}
+              // style={{ display: "inline-block", padding: "10px 20px", background-color: #97c5bf; color: #fff; text-decoration: none; border-radius: 5px; font-size: 16px; font-weight: bold; text-align: center; cursor: pointer; transition: background-color 0.3s ease;"}}
+            >
+              Home
+            </a>
+          {/* </div> */}
+
           {/* <h1 className={styles.completedFooter}>Your INSPIRE® Team</h1> */}
         </div>
       )}

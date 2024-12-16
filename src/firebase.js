@@ -355,6 +355,41 @@ async function createResponses(responseCreates) {
   }
 }
 
+
+
+
+
+
+
+const checkIfStudentEmailExists = async (email) => {
+  try {
+    // Initialize Firestore
+     initializeApp(firebaseConfig)
+    //  const db = getFirestore()
+    const db = getFirestore()
+
+    // Reference the "students" collection
+    const studentsRef = collection(db, "students")
+
+    // Create a query to find documents where the email matches
+    const q = query(studentsRef, where("email", "==", email))
+
+    // Execute the query
+    const querySnapshot = await getDocs(q)
+    if (querySnapshot.empty) {
+      return false
+    } else{
+      return true
+    }
+    // Check if any documents were found
+    
+      // return !querySnapshot.empty
+  } catch (error) {
+    console.error("Error checking student email:", error)
+    throw new Error("Failed to check if student email exists.")
+  }
+}
+
 export {
   getUser,
   createResponses,
@@ -362,4 +397,5 @@ export {
   createUser,
   getQuiz,
   getVideo,
+  checkIfStudentEmailExists
 }

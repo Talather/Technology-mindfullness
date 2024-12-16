@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import styles from "./form.module.css"
 import { useNavigate } from "react-router-dom"
-import { createUser } from "../../firebase"
+import { checkIfStudentEmailExists, createUser } from "../../firebase"
 import SchoolAutoComplete from "../../components/school/autocomplete"
 // import { usePathname, useRouter, useSearchParams } from "next/navigation"
 export default function SignInFormComponent() {
@@ -29,17 +29,33 @@ export default function SignInFormComponent() {
       school: formData.school,
       role: "student",
     }
+
+
+    const exists = await checkIfStudentEmailExists(formData.email)
+    if (exists) {
+      setState({ error: "Student Email Already Exists" })
+
+
+      setTimeout(() => {
+        setState({ error: null }) // Set the error back to null or an empty state
+      }, 2000)
+    }
+    else {
+       const user = await createUser({ userCreate })
+       console.log("mika singh", user)
+       if (!user) {
+         setState({ success: true })
+       } else {
+         setState(user)
+       }
+       navigate(
+         `/video?grade=${user.grade}&user=${user.id}&school=${formData.school}`
+       )
+  
+    }
     // const params = new URLSearchParams(searchParams)
     
-    const user = await createUser({ userCreate })
-    console.log("mika singh",user)
-    if (!user) {
-      setState({ success: true })
-    } else {
-      setState(user)
-    }
-    navigate(`/video?grade=${user.grade}&user=${user.id}&school=${formData.school}`)
-  }
+   }
 
   return (
     <form className={styles.signInForm} onSubmit={handleSubmit(onSubmit)}>
@@ -81,6 +97,7 @@ export default function SignInFormComponent() {
           radius={"sm"}
           {...register("grade", { required: true })}
           type={"number"}
+          max={10}
           variant={"bordered"}
         />
       </div>
